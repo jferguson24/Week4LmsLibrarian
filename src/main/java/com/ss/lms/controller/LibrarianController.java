@@ -97,7 +97,6 @@ public class LibrarianController {
 	// Returns a response entity with
 	@GetMapping(value = "/branch/{branchId}",produces = {"application/xml", "application/json"})
 	public ResponseEntity<Optional<LibraryBranch>> readLibraryBranchById(@PathVariable Integer branchId) {
-		System.out.println("Hello.");
 		Optional<LibraryBranch> libraryBranch = userLibrarian.readLibraryBranchById(branchId);
 		
 		if (!libraryBranch.isPresent()) {
@@ -115,7 +114,6 @@ public class LibrarianController {
 		Optional<LibraryBranch> branch = userLibrarian.readLibraryBranchById(branchId); 
 		Optional<BookCopy> bookCopy = userLibrarian.readBookCopyById(new BookCopyCompositeKey(book.get(), branch.get()));
 
-		System.out.println(bookId + "  1111111111 " + branchId);
 		if(!bookCopy.isPresent()) {
 			//if the bookCopy isnt found returns status code 404
 			return new ResponseEntity<BookCopy>(HttpStatus.NOT_FOUND);
